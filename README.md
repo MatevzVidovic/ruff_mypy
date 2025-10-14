@@ -32,7 +32,7 @@ warn_return_any = false             # don’t complain about returning Any
 warn_unused_ignores = false         # don’t warn about unused # type: ignore
 check_untyped_defs = false          # Skips type checking for untyped functions
 no_implicit_optional = false        # Allows implicit `Optional[...]` for args with default `None`
-warn_unreachable = false`           # Disables unreachable code warnings
+warn_unreachable = false           # Disables unreachable code warnings
 
 
 
@@ -43,23 +43,6 @@ poetry run ruff format .    # just formats consistent spacing, indentation, line
 poetry run mypy .
 
 poetry run ruff check . --fix
-
-
-
-### Poetry aliases:
-
-
-[tool.poetry.scripts]
-lint = "ruff check ."
-lfix = "ruff check . --fix"
-format = "ruff format ."
-typecheck = "mypy ."
-
-Just run:
-(set bash alias pp="poetry run")
-poetry run lint
-poetry run typecheck
-
 
 
 ### If you use VS Code:
@@ -77,3 +60,43 @@ Ruff auto-detects pyproject.toml settings.
 # my_module.py
 # mypy: disallow_untyped_defs=False
 '''
+
+
+
+
+
+### Makefile
+(set bash alias m for make)
+
+.PHONY: lint format typecheck check-all
+
+lint:
+	poetry run ruff check . --fix
+
+format:
+	poetry run ruff format .
+
+typecheck:
+	poetry run mypy .
+
+check-all: lint format typecheck
+
+
+
+
+
+
+
+### Poetry alias scripts (if not using make):
+
+[tool.poetry.scripts]
+lint = "ruff check . --fix"
+format = "ruff format ."
+typecheck = "mypy ."
+
+Just run:
+(set bash alias pp="poetry run")
+poetry run lint
+poetry run typecheck
+
+

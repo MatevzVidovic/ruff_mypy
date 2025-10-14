@@ -28,9 +28,7 @@ def evaluate_expression(expression: str) -> int:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Evaluate an arithmetic expression with + and *."
-    )
+    parser = argparse.ArgumentParser(description="Evaluate an arithmetic expression with + and *.")
     parser.add_argument("expression", help="Expression to evaluate, e.g. '2+3*4'")
     args = parser.parse_args()
     result = evaluate_expression(args.expression)

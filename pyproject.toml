@@ -15,7 +15,7 @@ dependencies = [
 line-length = 100
 target-version = "py312"
 fix = true
-extend-select = ["I", "UP", "B", "C90"]  # import sorting, pyupgrade, bugbear, complexity
+lint.extend-select = ["I", "UP", "B", "C90"]  # import sorting, pyupgrade, bugbear, complexity
 exclude = ["build", "dist", ".venv"]
 
 [tool.mypy]
@@ -29,9 +29,7 @@ warn_return_any = false             # don’t complain about returning Any
 warn_unused_ignores = false         # don’t warn about unused # type: ignore
 check_untyped_defs = false          # Skips type checking for untyped functions
 no_implicit_optional = false        # Allows implicit `Optional[...]` for args with default `None`
-warn_unreachable = false`           # Disables unreachable code warnings
-
-
+warn_unreachable = false           # Disables unreachable code warnings
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
