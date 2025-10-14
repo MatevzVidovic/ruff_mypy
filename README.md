@@ -12,6 +12,7 @@ poetry add --group dev ruff mypy
 
 
 ### Make setup of these tools in pyproject.toml:
+#### (Make sure to change the python version in both)
 
 [tool.ruff]
 # Linting rules and formatting
@@ -34,6 +35,29 @@ check_untyped_defs = false          # Skips type checking for untyped functions
 no_implicit_optional = false        # Allows implicit `Optional[...]` for args with default `None`
 warn_unreachable = false           # Disables unreachable code warnings
 
+
+
+### Makefile
+(set bash alias m for make)
+(Just make Makefile in your project and add:)
+
+.PHONY: lint format typecheck check-all
+
+lint:
+	poetry run ruff check . --fix
+
+format:
+	poetry run ruff format .
+
+typecheck:
+	poetry run mypy .
+
+check-all: lint format typecheck
+
+
+
+
+## More just informative:
 
 
 ### Commands:
@@ -64,22 +88,6 @@ Ruff auto-detects pyproject.toml settings.
 
 
 
-
-### Makefile
-(set bash alias m for make)
-
-.PHONY: lint format typecheck check-all
-
-lint:
-	poetry run ruff check . --fix
-
-format:
-	poetry run ruff format .
-
-typecheck:
-	poetry run mypy .
-
-check-all: lint format typecheck
 
 
 
