@@ -25,7 +25,7 @@ poetry add --group dev ruff mypy
 line-length = 100
 target-version = "py312"
 fix = true
-extend-select = ["I", "UP", "B", "C90"]  # import sorting, pyupgrade, bugbear, complexity
+lint.extend-select = ["I", "UP", "B", "C90"]  # import sorting, pyupgrade, bugbear, complexity
 exclude = ["build", "dist", ".venv"]
 
 [tool.mypy]
