@@ -2,17 +2,23 @@
 
 ## Setup
 
+### If trying out this project:
+```sh
 conda create -n ruff_mypy python=3.12
 conda activate ruff_mypy
 pip install poetry
-
 poetry init
+```
 
+### Install ruff and mypy:
+```sh
 poetry add --group dev ruff mypy
-
+```
 
 ### Make setup of these tools in pyproject.toml:
 #### (Make sure to change the python version in both)
+
+```toml
 
 [tool.ruff]
 # Linting rules and formatting
@@ -35,12 +41,14 @@ check_untyped_defs = false          # Skips type checking for untyped functions
 no_implicit_optional = false        # Allows implicit `Optional[...]` for args with default `None`
 warn_unreachable = false           # Disables unreachable code warnings
 
+```
 
 
 ### Makefile
 (set bash alias m for make)
 (Just make Makefile in your project and add:)
 
+```
 .PHONY: lint format typecheck check-all
 
 lint:
@@ -53,12 +61,40 @@ typecheck:
 	poetry run mypy .
 
 check-all: lint format typecheck
+```
 
 
+### If you use VS Code:
+
+Install “Ruff” and “Mypy Type Checker” extensions.
+
+Disable flake8 or pylint to avoid duplicate diagnostics.
+
+Ruff auto-detects pyproject.toml settings.
+
+
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
 
 
 ## More just informative:
-
 
 ### Commands:
 
@@ -69,13 +105,6 @@ poetry run mypy .
 poetry run ruff check . --fix
 
 
-### If you use VS Code:
-
-Install “Ruff” and “Mypy Type Checker” extensions.
-
-Disable flake8 or pylint to avoid duplicate diagnostics.
-
-Ruff auto-detects pyproject.toml settings.
 
 
 ### Disable mypy in code:
